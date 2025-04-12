@@ -8,7 +8,8 @@
     </head>
     <body>
         <div class="container">
-            <h1>Lista de Tarefas</h1>
+            <h1 class="title">Lista de Tarefas</h1>
+            <br />
             <!--Formulário de inclusão da tarefa.-->
             <form id="task-form">
                 <input
@@ -19,6 +20,7 @@
 
                 <button type="submit" id="task-button">Adicionar</button>
             </form>
+            <br />
             <!--Filtrar lista de tarefas usando data-filter (atributo)-->
             <div class="filters">
                 <button data-filter="all">Todas</button>
@@ -26,7 +28,29 @@
                 <button data-filter="completed">Concluídas</button>
             </div>
             <!--Lista de tarefas-->
-            <ul id="task-list"></ul>
+            <ul id="task-list">
+                <li class="task-item completed">
+                    <label class="checkbox-wrapper">
+                        <input type="checkbox" class="completed-checkbox" />
+                        <span class="task-text">Implementar HTML</span>
+                    </label>
+                    <button class="delete-button">Deletar</button>
+                </li>
+                <li class="task-item">
+                    <label class="checkbox-wrapper">
+                        <input type="checkbox" class="completed-checkbox" />
+                        <span class="task-text">Implementar CSS</span>
+                    </label>
+                    <button class="delete-button">Deletar</button>
+                </li>
+                <li class="task-item">
+                    <label class="checkbox-wrapper">
+                        <input type="checkbox" class="completed-checkbox" />
+                        <span class="task-text">Implementar JavaScript</span>
+                    </label>
+                    <button class="delete-button">Deletar</button>
+                </li>
+            </ul>
         </div>
 
         <script src="script.js"></script>
