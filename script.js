@@ -26,10 +26,25 @@ function addTask(text, completed = false) {
 
     taskItem.innerHTML = `
     <label class="checkbox-wrapper">
-        <input type="checkbox" class="completed-checkbox" />
+        <input type="checkbox" class="completed-checkbox" ${
+            completed ? 'checked' : ''
+        } />
         <span class="task-text">${text}</span>
     </label>
     <button class="delete-button">Deletar</button>
     `
+
+    taskItem
+        .querySelector('.completed-checkbox')
+        .addEventListener('change', function () {
+            taskItem.classList.toggle('completed')
+        })
+
+    taskItem
+        .querySelector('.delete-button')
+        .addEventListener('click', function () {
+            taskItem.remove()
+        })
+
     taskList.appendChild(taskItem)
 }

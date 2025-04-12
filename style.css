@@ -126,6 +126,10 @@ input.completed-checkbox {
 }
 
 .task-item.completed {
+    background-color: #1dd75b1f;
+}
+
+.task-item.completed .task-text {
     text-decoration: line-through;
     color: #999;
 }
