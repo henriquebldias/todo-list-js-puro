@@ -80,6 +80,11 @@ body {
     background-color: #379ae6;
 }
 
+.filters button.active {
+    background-color: #379ae6;
+    font-weight: bold;
+}
+
 #task-list {
     list-style: none;
 }
