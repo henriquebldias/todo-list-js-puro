@@ -4,6 +4,9 @@ const taskInput = document.getElementById('task-input')
 const taskList = document.getElementById('task-list')
 const filterButtons = document.querySelectorAll('.filters button')
 
+//Carregamento do evento load
+document.addEventListener('DOMContentLoaded', loadTasks())
+
 //Evento para adicionar uma tarefa na lista
 taskForm.addEventListener('submit', function (e) {
     e.preventDefault()
@@ -49,17 +52,21 @@ function addTask(text, completed = false) {
         .querySelector('.completed-checkbox')
         .addEventListener('change', function () {
             taskItem.classList.toggle('completed')
+            saveTasks()
         })
 
     taskItem
         .querySelector('.delete-button')
         .addEventListener('click', function () {
             taskItem.remove()
+            saveTasks()
         })
 
     taskList.appendChild(taskItem)
+    saveTasks()
 }
 
+//Filtrar listas de tarefas
 function filterTasks(filter) {
     const tasks = taskList.querySelectorAll('li')
     tasks.forEach((task) => {
@@ -76,5 +83,28 @@ function filterTasks(filter) {
                 task.style.display = isCompleted ? 'flex' : 'none'
                 break
         }
+    })
+}
+
+//Salvar tasks em localStorage
+function saveTasks() {
+    const tasks = []
+
+    taskList.querySelectorAll('li').forEach((task) => {
+        tasks.push({
+            text: task.querySelector('.task-text').innerText,
+            completed: task.classList.contains('completed'),
+        })
+    })
+
+    localStorage.setItem('tasks', JSON.stringify(tasks))
+}
+
+//Carregar tarefas do localStorage
+function loadTasks() {
+    const tasks = JSON.parse(localStorage.getItem('tasks')) || []
+
+    tasks.forEach((task) => {
+        addTask(task.text, task.completed)
     })
 }
